@@ -12,19 +12,31 @@ import java.util.*;
 class Solution {
     public boolean isPalindrome(ListNode head) {
         
-        List<Integer> a = new ArrayList<>();
-        while(head != null){
-            a.add(head.val);
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        ListNode secondHalf = reverse(slow);
+        while (secondHalf != null) {
+            if (head.val != secondHalf.val) {
+                return false;
+            }
             head = head.next;
+            secondHalf = secondHalf.next;
         }
-        
-            System.out.println(a.size()/2);
-        
-        for(int i=0; i<a.size()/2; i++){
-            
-            if(a.get(i) != a.get(a.size()-i-1)) return false;
-        }
-        
         return true;
+    }
+
+    public ListNode reverse(ListNode head) {
+        ListNode prev = null;
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
+        }
+        return prev;
     }
 }
