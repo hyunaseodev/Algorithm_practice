@@ -13,23 +13,13 @@ class Solution {
     public boolean isPalindrome(ListNode head) {
         
         List<Integer> a = new ArrayList<>();
-        ListNode aHead = head;
-        while(aHead != null){
-            a.add(aHead.val);
-            aHead = aHead.next;
-        }
-        
-        ListNode bNode = null;
         while(head != null){
-            ListNode nextNode = head.next;
-            head.next = bNode;            
-            bNode = head;
-            head = nextNode;
+            a.add(head.val);
+            head = head.next;
         }
         
         for(int i=0; i<a.size()/2; i++){
-            if(a.get(i) != bNode.val) return false;
-            else bNode = bNode.next;
+            if(a.get(i) != a.get(a.size()-i-1)) return false;
         }
         
         return true;
