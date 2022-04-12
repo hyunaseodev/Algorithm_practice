@@ -12,7 +12,7 @@ import java.util.*;
 class Solution {
     public boolean isPalindrome(ListNode head) {
         
-        List<Integer> a = new LinkedList<>();
+        List<Integer> a = new ArrayList<>();
         ListNode aHead = head;
         while(aHead != null){
             a.add(aHead.val);
