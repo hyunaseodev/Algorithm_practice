@@ -19,6 +19,8 @@ class Solution {
         }
         
         for(int i=0; i<a.size()/2; i++){
+            
+            System.out.println(a.size()/2);
             if(a.get(i) != a.get(a.size()-i-1)) return false;
         }
         
