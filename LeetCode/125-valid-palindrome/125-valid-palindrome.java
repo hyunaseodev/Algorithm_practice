@@ -16,7 +16,7 @@ class Solution {
 
         int len = removedS.length();
         
-        for(int i=0 ; i < len; i++){
+        for(int i=0 ; i < len/2; i++){
             if(removedS.charAt(i) != removedS.charAt(len-i-1)) return false;
         }
         
