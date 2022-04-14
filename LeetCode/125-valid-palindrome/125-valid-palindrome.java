@@ -1,22 +1,27 @@
 class Solution {
     public boolean isPalindrome(String s) {
         
-        s = s.toLowerCase();
-                
-        String forwardS = "";
-        String backwardS = "";
+        String fixedS = "";
         
-        for(int i = 0; i < s.length(); i++){
-            char c = s.charAt(i);
-            //[a-b],[0-9]
-            if((97 <= c && c <= 122)
-               || (48 <= c && c <= 57)){
-                forwardS += c;
-                backwardS = c + backwardS;
-            }            
+        for(char c : s.toCharArray()){
+            if(Character.isDigit(c) || Character.isLetter(c)) {
+                fixedS += c;
+            }
         }
-
-        if(forwardS.equals(backwardS)) return true;
-        else return false;
+        
+        fixedS = fixedS.toLowerCase();
+        
+        int aPointer = 0;
+        int bPointer = fixedS.length()-1;
+        
+        while(aPointer <= bPointer){
+            if(fixedS.charAt(aPointer) != fixedS.charAt(bPointer)){
+                return false;
+            }
+            
+            aPointer += 1;
+            bPointer -= 1;
+        }
+        return true;
     }
 }
