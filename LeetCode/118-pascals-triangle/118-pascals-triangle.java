@@ -7,7 +7,8 @@ class Solution {
             for(int j = 0; j <= i; j++){
 
                 if(i > 1 && j > 0 && j < i) {
-                    tempList.add(answerList.get(i - 1).get(j - 1) + answerList.get(i - 1).get(j));
+                    List<Integer> previousRow = answerList.get(i - 1);
+                    tempList.add(previousRow.get(j - 1) + previousRow.get(j));
                 } else {
                     tempList.add(1);
                 }
