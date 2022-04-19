@@ -2,25 +2,26 @@ import java.util.*;
 
 class Solution {
     public boolean isHappy(int n) {
-        HashSet<Integer> set = new HashSet<>();
-
+    HashSet<Integer> set = new HashSet<Integer>();
+ 
+    while(!set.contains(n)){
         set.add(n);
-        int a = n;
-
-        while(true){
-            String str = Integer.toString(a);
-            char[] charArr = str.toCharArray();
-
-            int sum = 0;
-            for(char c : charArr){
-                sum += (c-48) * (c-48);
-            }
-
-            if(sum == 1) return true;
-            if(set.contains(sum)) return false;
-
-            set.add(sum);
-            a = sum;
-        }
+ 
+        n = getSum(n);
+ 
+        if(n==1)
+            return true;
     }
+ 
+    return false;
+}
+ 
+public int getSum(int n){
+    int sum =0;
+    while(n>0){
+        sum+=(n%10)*(n%10);
+        n=n/10;
+    } 
+    return sum;    
+}
 }
