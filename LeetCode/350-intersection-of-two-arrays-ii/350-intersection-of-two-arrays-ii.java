@@ -17,9 +17,10 @@ class Solution {
             else if (nums1[nums1Pointer] < nums2[nums2Pointer])
                 nums1Pointer++;
             else if (nums1[nums1Pointer] == nums2[nums2Pointer]) {
-                answerArr[cnt++] = nums1[nums1Pointer];
+                answerArr[cnt] = nums1[nums1Pointer];
                 nums1Pointer++;
                 nums2Pointer++;
+                cnt++;
             }
         }
 
